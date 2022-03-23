@@ -172,7 +172,7 @@ if(isset($_GET['Del'])){
                                     <td><?= $person['dob'] ?></td>
                                     <td><?= $person['city'] ?></td>
                                     <td>
-                                        <a href="?editar&id=<?= $person['idpersona'] ?>" class="p-2 bg-amber-500 text-white rounded"><i class="fa fa-pen"></i></a> | <a onclick="eliminar(<?= $person['idpersona'] ?>)" class="p-2 bg-red-600 text-white rounded cursor-pointer"><i class="fa fa-trash"></i></a></a>
+                                        <a href="?editar&id=<?= $person['idpersona'] ?>" class="p-2 bg-amber-500 text-white rounded"><i class="fa fa-pen"></i></a> | <a onclick="eliminar(<?= $person['idpersona'] ?>)" class="p-2 bg-red-600 text-white rounded cursor-pointer"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php
@@ -240,7 +240,36 @@ const eliminar = (id) => {
 
   
 $(document).ready( function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        language: {
+
+        "lengthMenu": "Mostrar _MENU_ registros",
+
+        "zeroRecords": "No se encontraron resultados",
+
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+
+        "sSearch": "Buscar:",
+
+        "oPaginate": {
+
+            "sFirst": "Primero",
+
+            "sLast":"Último",
+
+            "sNext":"Siguiente",
+
+            "sPrevious": "Anterior"
+
+        }
+
+        },
+
+    });
 } );
 
 

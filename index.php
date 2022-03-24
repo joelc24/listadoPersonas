@@ -2,21 +2,21 @@
 require_once('Models/Person.php');
 require_once('Bussines/PersonService.php');
 
-if(isset($_GET['pNombre']) && !isset($_GET['id'])){
-    $pNombre = $_GET['pNombre'];
-    $sNombre = $_GET['sNombre'];
-    $dob = $_GET['dob'];
-    $city = $_GET['city'];
+if(isset($_POST['pNombre']) && !isset($_POST['id'])){
+    $pNombre = $_POST['pNombre'];
+    $sNombre = $_POST['sNombre'];
+    $dob = $_POST['dob'];
+    $city = $_POST['city'];
     PersonService::insert($pNombre,$sNombre,$dob,$city);
 
 }
 
-if(isset($_GET['id']) && isset($_GET['pNombre'])){
-    $id = $_GET['id'];
-    $pNombre = $_GET['pNombre'];
-    $sNombre = $_GET['sNombre'];
-    $dob = $_GET['dob'];
-    $city = $_GET['city'];
+if(isset($_POST['id']) && isset($_POST['pNombre'])){
+    $id = $_POST['id'];
+    $pNombre = $_POST['pNombre'];
+    $sNombre = $_POST['sNombre'];
+    $dob = $_POST['dob'];
+    $city = $_POST['city'];
     PersonService::update($id,$pNombre,$sNombre,$dob,$city);
 
 }
@@ -73,7 +73,7 @@ if(isset($_GET['Del'])){
                     <span class="text-indigo-600 font-bold">Administralas</span>
                 </p>
     
-                <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10" name="persona" method="GET" >
+                <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10" name="persona" method="POST" action="index.php" >
                 <div hidden id="errorMsg" class="bg-red-700 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
                     <p>Todos Los Campos Son Requeridos</p>
                 </div>
@@ -114,7 +114,7 @@ if(isset($_GET['Del'])){
                     <span class="text-indigo-600 font-bold">Administralas</span>
                 </p>
     
-                <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10" name="persona" method="GET">
+                <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10" name="persona" method="POST">
                 <div hidden id="errorMsg" class="bg-red-700 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
                     <p>Todos Los Campos Son Requeridos</p>
                 </div>
@@ -195,10 +195,10 @@ if(isset($_GET['Del'])){
 const $form = document.persona
 
 const obj = {
-    pNombre: $form.pNombre.value != '' ? $form.pNombre.value : '',
-    sNombre: $form.sNombre.value != '' ? $form.sNombre.value : '',
-    dob: $form.dob.value != '' ? $form.dob.value : '',
-    city: $form.city.value != '' ? $form.city.value : '',
+    pNombre: $form.pNombre.value,
+    sNombre: $form.sNombre.value,
+    dob: $form.dob.value,
+    city: $form.city.value,
 }
 
 $form.addEventListener('submit', (e)=>{

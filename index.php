@@ -83,22 +83,22 @@ if(isset($_GET['Del'])){
 
                         <label for="pNombre" class="block text-gray-700 uppercase font-bold">Primer Nombre 
                         </label>
-                        <input id="pNombre" type="text" name="pNombre" placeholder="Primer Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['firstName'] ?>" onchange=" obj['pNombre'] = this.value"/>
+                        <input id="pNombre" type="text" name="pNombre" placeholder="Primer Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['firstName'] ?>"/>
                     </div>
                     <div class="mb-5">
                         <label for="sNombre" class="block text-gray-700 uppercase font-bold">Segundo Nombre
                         </label>
-                        <input id="sNombre" type="text" name="sNombre" placeholder="Segundo Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['lastName'] ?>" onchange=" obj['sNombre'] = this.value"/>
+                        <input id="sNombre" type="text" name="sNombre" placeholder="Segundo Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['lastName'] ?>"/>
                     </div>
                     <div class="mb-5">
                         <label for="Dob" class="block text-gray-700 uppercase font-bold">Fecha
                         </label>
-                        <input id="Dob" type="date" name="dob" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['dob'] ?>" onchange=" obj['dob'] = this.value"/>
+                        <input id="Dob" type="date" name="dob" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['dob'] ?>"/>
                     </div>
                     <div class="mb-5">
                         <label for="ciudad" class="block text-gray-700 uppercase font-bold">Ciudad
                         </label>
-                        <input id="ciudad" type="text" name="city" placeholder="Ciudad de Residencia" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['city'] ?>" onchange=" obj['ciudad'] = this.value"/>
+                        <input id="ciudad" type="text" name="city" placeholder="Ciudad de Residencia" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" value="<?= $person['city'] ?>"/>
                     </div>
                     <input type="submit" class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors" value="actualizar"/>
                 </form>
@@ -122,22 +122,22 @@ if(isset($_GET['Del'])){
                     <div class="mb-5">
                         <label for="pNombre" class="block text-gray-700 uppercase font-bold">Primer Nombre 
                         </label>
-                        <input id="pNombre" name="pNombre" type="text" placeholder="Primer Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" onchange=" obj['pNombre'] = this.value"/>
+                        <input id="pNombre" name="pNombre" type="text" placeholder="Primer Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"/>
                     </div>
                     <div class="mb-5">
                         <label for="sNombre"  class="block text-gray-700 uppercase font-bold">Segundo Nombre
                         </label>
-                        <input id="sNombre" name="sNombre" type="text" placeholder="Segundo Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" onchange=" obj['sNombre'] = this.value"/>
+                        <input id="sNombre" name="sNombre" type="text" placeholder="Segundo Nombre de la Persona" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" />
                     </div>
                     <div class="mb-5">
                         <label for="dob" class="block text-gray-700 uppercase font-bold">Fecha
                         </label>
-                        <input id="dob" name="dob" type="date" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" onchange=" obj['dob'] = this.value"/>
+                        <input id="dob" name="dob" type="date" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"/>
                     </div>
                     <div class="mb-5">
                         <label for="city" class="block text-gray-700 uppercase font-bold">Ciudad
                         </label>
-                        <input id="city" name="city" type="text" placeholder="Ciudad de Residencia" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" onchange=" obj['city'] = this.value"/>
+                        <input id="city" name="city" type="text" placeholder="Ciudad de Residencia" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"/>
                     </div>
                     <input type="submit" class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors" />
                 </form>
@@ -193,6 +193,10 @@ if(isset($_GET['Del'])){
 
 <script>
 const $form = document.persona
+
+const $inputs = $form.querySelectorAll('input')
+
+$inputs.forEach(input => addEventListener('change', () => obj[input.name] = input.value))
 
 const obj = {
     pNombre: $form.pNombre.value,
